@@ -31,7 +31,7 @@ public class HomeController : Controller
         if (ModelState.IsValid)
         {
             _repo.AddTask(task);
-            return RedirectToAction("Quadrants");
+            return RedirectToAction("QuadrantsView");
         }
         else
         {
@@ -41,7 +41,7 @@ public class HomeController : Controller
         }
     }
 
-    public IActionResult Quadrants()
+    public IActionResult QuadrantsView()
     {
         var tasks = _repo.TaskItems.ToList();
         
