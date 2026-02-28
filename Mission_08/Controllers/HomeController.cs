@@ -76,6 +76,14 @@ public class HomeController : Controller
         }
     }
 
+    public IActionResult MarkCompleted(int id)
+    {
+        var task = _repo.TaskItems.Single(x => x.TaskId == id);
+        task.Completed = true;
+        _repo.UpdateTask(task);
+        return RedirectToAction("QuadrantsView");
+    }
+
     [HttpGet]
     public IActionResult Delete(int id)
     {
