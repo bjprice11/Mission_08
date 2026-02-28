@@ -26,18 +26,18 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult Index(TaskItem task)
+    public IActionResult Index(TaskItem newTask)
     {
         if (ModelState.IsValid)
         {
-            _repo.AddTask(task);
+            _repo.AddTask(newTask);
             return RedirectToAction("QuadrantsView");
         }
         else
         {
             ViewBag.Categories = new SelectList(_repo.Categories
                 .OrderBy(x => x.Name), "CategoryId", "Name");
-            return View(task);
+            return View(newTask);
         }
     }
 
